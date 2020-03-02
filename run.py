@@ -29,17 +29,16 @@ def run():
         jss_new_info = get_info_jss() # 计算所最新消息
     except Exception as e:
         logger.error(e)
-
-    diff_info = ['自动化所', ZDH, ''] + diff(zdh_new_info, zdh_old_info)
-    diff_info = diff_info + ['网络信息中心', WLXXZX, ''] + diff(wlxxzx_new_info, wlxxzx_old_info)
-    diff_info = diff_info + ['信工所', XGS, ''] + diff(xgs_new_info, xgs_old_info)
-    diff_info = diff_info + ['计算所', JSS, ''] + diff(jss_new_info, jss_old_info)
-
-    contend = '\n'.join(diff_info) # 邮件内容
-    froms = '招生信息更新'
-    to = '雒海艇'
-    subject = "招生信息更新"
-    send_email(contend, froms, to, subject)
+    if diff(zdh_new_info, zdh_old_info) or diff(wlxxzx_new_info, wlxxzx_old_info) or diff(xgs_new_info, xgs_old_info) or diff(jss_new_info, jss_old_info):
+        diff_info = ['自动化所', ZDH, ''] + diff(zdh_new_info, zdh_old_info)
+        diff_info = diff_info + ['网络信息中心', WLXXZX, ''] + diff(wlxxzx_new_info, wlxxzx_old_info)
+        diff_info = diff_info + ['信工所', XGS, ''] + diff(xgs_new_info, xgs_old_info)
+        diff_info = diff_info + ['计算所', JSS, ''] + diff(jss_new_info, jss_old_info)
+        contend = '\n'.join(diff_info) # 邮件内容
+        froms = '招生信息更新'
+        to = '雒海艇'
+        subject = "招生信息更新"
+        send_email(contend, froms, to, subject)
     zdh_old_info = zdh_new_info
     wlxxzx_old_info = wlxxzx_new_info
     xgs_old_info = xgs_new_info
