@@ -21,11 +21,14 @@ def run():
     global jss_old_info
     global wlxxzx_old_info
     global xgs_old_info
-
-    zdh_new_info = get_info_zdh() # 自动化所最新消息
-    wlxxzx_new_info = get_info_wlxxzx() # 网络信息中心最新消息
-    xgs_new_info = get_info_xgs() # 信工所最新消息
-    jss_new_info = get_info_jss() # 计算所最新消息
+    
+    try:
+        zdh_new_info = get_info_zdh() # 自动化所最新消息
+        wlxxzx_new_info = get_info_wlxxzx() # 网络信息中心最新消息
+        xgs_new_info = get_info_xgs() # 信工所最新消息
+        jss_new_info = get_info_jss() # 计算所最新消息
+    except Exception as e:
+        logger.error(e)
 
     diff_info = ['自动化所', ZDH, ''] + diff(zdh_new_info, zdh_old_info)
     diff_info = diff_info + ['网络信息中心', WLXXZX, ''] + diff(wlxxzx_new_info, wlxxzx_old_info)
