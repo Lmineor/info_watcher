@@ -47,7 +47,10 @@ def run():
 
 
 def diff(new_info, old_info) -> list:
-    return list(set(new_info)^set(old_info))
+    if not old_info:
+        return new_info
+    else:
+        return new_info[:new_info.index(old_info[0])]
 
 
 if __name__ == '__main__':
