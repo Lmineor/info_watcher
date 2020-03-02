@@ -14,6 +14,9 @@ SENDER = MAIL_USER
 RECEIVERS = [MAIL_USER]
 
 # 目标院校
-SCHOOLS = [
-    'http://www.ia.cas.cn/yjsjy/zs/sszs/index.html'
-]
+ZDH = 'http://www.ia.cas.cn/yjsjy/zs/sszs/index.html' # 自动化所
+JSS = 'http://www.ict.cas.cn/shye/tzgg/index.html' # 计算所
+XGS = 'http://www.iie.cas.cn/yjsjy_101173/yjszxtz/index.html' # 信工所
+WLXXZX = 'http://www.cnic.cas.cn/yjsjy/tzgg/index.html' # 网络信息中心
+
+INTERVAL = 3000 # 默认3000s 查询一次接口
