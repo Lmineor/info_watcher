@@ -30,7 +30,7 @@ def run():
     diff_info = ['自动化所', ZDH, ''] + diff(zdh_new_info, zdh_old_info)
     diff_info = diff_info + ['网络信息中心', WLXXZX, ''] + diff(wlxxzx_new_info, wlxxzx_old_info)
     diff_info = diff_info + ['信工所', XGS, ''] + diff(xgs_new_info, xgs_old_info)
-    diff_info = diff_info + ['计算所', JSS, '' + diff(jss_new_info, jss_old_info)
+    diff_info = diff_info + ['计算所', JSS, ''] + diff(jss_new_info, jss_old_info)
 
     contend = '\n'.join(diff_info) # 邮件内容
     froms = '招生信息更新'
