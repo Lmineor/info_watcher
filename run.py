@@ -36,17 +36,17 @@ def run():
         logger.error(e)
     diff_total = []
     if diff(zdh_new_info, zdh_old_info):
-        diff_total = ['自动化所', ZDH] + diff(zdh_new_info, zdh_old_info) + ['']
+        diff_total = diff_total + ['自动化所', ZDH] + diff(zdh_new_info, zdh_old_info) + ['']
     if diff(wlxxzx_new_info, wlxxzx_old_info):
-        diff_total = ['网络信息中心', WLXXZX] + diff(wlxxzx_new_info, wlxxzx_old_info) + ['']
+        diff_total = diff_total + ['网络信息中心', WLXXZX] + diff(wlxxzx_new_info, wlxxzx_old_info) + ['']
     if diff(xgs_new_info, xgs_old_info):
-        diff_total = ['信工所', XGS, ''] + diff(xgs_new_info, xgs_old_info) + ['']
+        diff_total = diff_total + ['信工所', XGS] + diff(xgs_new_info, xgs_old_info) + ['']
     if diff(jss_new_info, jss_old_info):
-        diff_total = ['计算所', JSS, ''] + diff(jss_new_info, jss_old_info) + ['']
+        diff_total = diff_total + ['计算所', JSS] + diff(jss_new_info, jss_old_info) + ['']
     if diff(kyb_new_info, kyb_old_info):
-        diff_total = ['考研帮', KYB, ''] + diff(kyb_new_info, kyb_old_info) + ['']
-    if '\n'.join(diff_info):
-        contend = '\n'.join(diff_info) # 邮件内容
+        diff_total = diff_total + ['考研帮', KYB] + diff(kyb_new_info, kyb_old_info) + ['']
+    if '\n'.join(diff_total):
+        contend = '\n'.join(diff_total) # 邮件内容
         froms = '招生信息更新'
         to = '雒海艇'
         subject = "招生信息更新"

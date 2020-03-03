@@ -74,7 +74,7 @@ def get_info_wlxxzx() -> list:
 
 def get_info_kyb() -> list:
     # 考研帮信息查询
-    logger.info("开始查询网络信息中心招生信息")
+    logger.info("开始查询考研帮招生信息")
     rep = requests.get(KYB)
     rep.encoding = 'utf-8'
     soup = BeautifulSoup(rep.text, 'html.parser')
