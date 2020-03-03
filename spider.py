@@ -5,7 +5,7 @@ from typing import List
 import requests
 from bs4 import BeautifulSoup
 
-from config import ZDH, JSS, XGS, WLXXZX
+from config import ZDH, JSS, XGS, WLXXZX, KYB
 from send_email import send_email
 from Slog import logger
 
@@ -72,5 +72,21 @@ def get_info_wlxxzx() -> list:
     return res
 
 
+def get_info_kyb() -> list:
+    # 考研帮信息查询
+    logger.info("开始查询网络信息中心招生信息")
+    rep = requests.get(KYB)
+    rep.encoding = 'utf-8'
+    soup = BeautifulSoup(rep.text, 'html.parser')
+    li_list = soup.find('ul', attrs={'class':'list areaZslist'})
+    re_pattern = '(?<=>).+?(?=<)'
+    res = []
+    for li in li_list:
+        title = re.findall(re_pattern, str(li.find('a')))
+        if title:
+            res.append(title[0])
+    return res
+
+
 if __name__ == '__main__':
-    get_info_wlxxzx()
+    print(get_info_kyb())
