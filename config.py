@@ -18,6 +18,7 @@ ZDH = 'http://www.ia.cas.cn/yjsjy/zs/sszs/index.html' # 自动化所
 JSS = 'http://www.ict.cas.cn/shye/tzgg/index.html' # 计算所
 XGS = 'http://www.iie.cas.cn/yjsjy_101173/yjszxtz/index.html' # 信工所
 WLXXZX = 'http://www.cnic.cas.cn/yjsjy/tzgg/index.html' # 网络信息中心
+SXS = 'http://www.ioa.cas.cn/yjsjy/zs/zstz/' # 声学所
 
 # 第三方网站
 KYB = 'http://tiaoji.kaoyan.com/beijing/' # 考研帮
