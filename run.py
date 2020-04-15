@@ -20,6 +20,8 @@ def run():
         schoo_new_news = ['']
     if diff(schoo_new_news, schoo_old_news):
         _diff = diff(schoo_new_news, schoo_old_news)
+    else:
+        _diff = []
     if '\n'.join(_diff):
         contend = '\n'.join(_diff) # 邮件内容
         froms = '招生信息更新'
