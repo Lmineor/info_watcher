@@ -26,7 +26,7 @@ def run():
     if '\n'.join(_diff):
         contend = '\n'.join(_diff) # 邮件内容
         froms = '招生信息更新'
-        to = '雒海艇'
+        to = '1'
         subject = "招生信息更新"
         send_email(contend, froms, to, subject)
     school_old_news = school_new_news
