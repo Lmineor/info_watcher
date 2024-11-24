@@ -6,8 +6,7 @@ FROM python:3.9.6-slim as base
 # it will install all requirements.
 FROM base as builder
 
-RUN apt-get update && \
-    apt-get install -y xvfb gnupg wget curl unzip --no-install-recommends && \
+RUN apt-get install -y xvfb gnupg wget curl unzip --no-install-recommends && \
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
     echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list && \
     apt-get update -y && \
