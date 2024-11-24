@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import os
+import time
 from typing import List
 
 import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.options import Options
-from pyvirtualdisplay import Display
 
+from info_watcher.logger.logger import logger
 from info_watcher.config import OLD_INFO_DIR
 
 """
@@ -53,20 +51,37 @@ class Spider(object):
         self.write_new_info(self.filename, new_infos)
         return diffs
 
-    def get_soup(self, url):
-        # set xvfb display since there is no GUI in docker container.
-        # display = Display(visible=False, size=(800, 600))
-        # display.start()
+    # def get_soup(self, url):
+    #     # set xvfb display since there is no GUI in docker container.
+    #     # display = Display(visible=False, size=(800, 600))
+    #     # display.start()
+    #
+    #     chrome_options = Options()
+    #     chrome_options.binary_location = "chromedriver"
+    #     chrome_options.add_argument("--no-sandbox")
+    #     chrome_options.add_argument('--window-size=1420,1080')
+    #     chrome_options.add_argument('--headless')  # 无头模式运行，不需要图形界面
+    #     chrome_options.add_argument('--disable-gpu')  # 禁用GPU加速
+    #     driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
+    #     driver.get(url)
+    #     page_source = driver.page_source
+    #     driver.quit()
+    #     return self.drink_soup(page_source)
 
-        chrome_options = Options()
-        chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument('--window-size=1420,1080')
-        chrome_options.add_argument('--headless')  # 无头模式运行，不需要图形界面
-        chrome_options.add_argument('--disable-gpu')  # 禁用GPU加速
-        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
+    def get_soup(self, url):
+        logger.info(f'connecting to {url} ...')
+        time.sleep(5)
+        options = webdriver.ChromeOptions()
+
+        driver = webdriver.Remote(
+            command_executor="http://localhost:4444/wd/hub",
+            options=options
+        )
+
         driver.get(url)
         page_source = driver.page_source
-        driver.quit()
+        driver.close()
+
         return self.drink_soup(page_source)
 
 
