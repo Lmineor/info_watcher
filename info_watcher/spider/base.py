@@ -59,8 +59,9 @@ class Spider(object):
         # display.start()
 
         chrome_options = Options()
-        chrome_options.add_argument('--headless')  # 无头模式运行，不需要图形界面
         chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument('--window-size=1420,1080')
+        chrome_options.add_argument('--headless')  # 无头模式运行，不需要图形界面
         chrome_options.add_argument('--disable-gpu')  # 禁用GPU加速
         driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
         driver.get(url)
