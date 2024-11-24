@@ -70,11 +70,11 @@ class Spider(object):
 
     def get_soup(self, url):
         logger.info(f'connecting to {url} ...')
-        time.sleep(5)
         options = webdriver.ChromeOptions()
+        options.add_argument('--headless')
 
         driver = webdriver.Remote(
-            command_executor="http://localhost:4444/wd/hub",
+            command_executor="http://127.0.0.1:4444/wd/hub",
             options=options
         )
 

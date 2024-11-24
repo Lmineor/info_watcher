@@ -32,7 +32,7 @@ class Bark(object):
         self.code_map = code_map
 
     def notify_app(self, msgs):
-        for key, items in msgs:
+        for key, items in msgs.items():
             logger.info(f"msg key {key}, contents {items}")
             for item in items:
                 self.msg_loop.append(Msg(self.code_map[key], item))
