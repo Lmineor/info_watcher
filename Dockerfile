@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . /app
 
 # 使用pip安装依赖
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --no-cache-dir -r requirements.txt
 
 # 定义容器启动时执行的命令
 CMD ["python", "./run.py"]
