@@ -1,10 +1,10 @@
 # 使用官方Python运行时作为父镜像
-FROM python:3.9.6-slim as base
+FROM python:3.9.6-slim AS base
 ## start builder stage.
 
 # this is the first stage of the build.
 # it will install all requirements.
-FROM base as builder
+FROM base AS builder
 #
 # RUN apt-get install -y xvfb gnupg wget curl unzip --no-install-recommends && \
 #     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
