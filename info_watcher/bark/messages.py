@@ -4,12 +4,15 @@
 """
 @Author  : lex(luohai2233@163.com)
 """
+import os
 import time
 
 import requests
 
 from info_watcher.logger.logger import logger
-from info_watcher.config import bark_port
+
+BARK_KEY = os.environ.get('BARK_KEY')
+BARK_PORT = os.environ.get('BARK_PORT')
 
 
 class Msg(object):
@@ -45,6 +48,6 @@ class Bark(object):
     def _notify(msg):
         try:
             logger.info(f"send msg to app, title is {msg.title}, content is {msg.content}")
-            requests.get(f"localhost:{bark_port}/{msg.title}/{msg.content}")
+            requests.get(f"localhost:{BARK_PORT}/{BARK_KEY}/{msg.title}/{msg.content}")
         except Exception as e:
             logger.error(f"failed to notify app, {e}")

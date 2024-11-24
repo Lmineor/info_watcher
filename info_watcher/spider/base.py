@@ -5,7 +5,7 @@ from typing import List
 
 from bs4 import BeautifulSoup
 
-from info_watcher.config import old_info_dir
+from info_watcher.config import OLD_INFO_DIR
 
 """
 @Author  : lex(luohai2233@163.com)
@@ -25,14 +25,14 @@ class Spider(object):
 
     @staticmethod
     def read_old_info(filename):
-        filename = os.path.join(old_info_dir, filename)
+        filename = os.path.join(OLD_INFO_DIR, filename)
         with open(filename, 'r') as f:
             data = f.readlines()
         return data
 
     @staticmethod
     def write_new_info(filename, info):
-        filename = os.path.join(old_info_dir, filename)
+        filename = os.path.join(OLD_INFO_DIR, filename)
         with open(filename, 'w') as f:
             f.writelines(info)
 
