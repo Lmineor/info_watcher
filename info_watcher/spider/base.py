@@ -55,8 +55,8 @@ class Spider(object):
 
     def get_soup(self, url):
         # set xvfb display since there is no GUI in docker container.
-        display = Display(visible=False, size=(800, 600))
-        display.start()
+        # display = Display(visible=False, size=(800, 600))
+        # display.start()
 
         chrome_options = Options()
         chrome_options.add_argument('--headless')  # 无头模式运行，不需要图形界面
