@@ -10,13 +10,13 @@ from info_watcher.bark.messages import Bark
 from info_watcher.logger.logger import logger
 
 
-def watcher():
+def watcher(run_on_start=False):
     logger.info("trigger task")
     messages = {}
     code_map = {"youzheng": "邮政"}
 
     messages['youzheng'] = YouZhengSpider().run()
-
-    b = Bark(code_map)
-    b.notify_app(messages)
+    if not run_on_start:
+        b = Bark(code_map)
+        b.notify_app(messages)
     return messages
