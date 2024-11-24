@@ -3,11 +3,13 @@
 import os
 from typing import List
 
+import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
+from pyvirtualdisplay import Display
 
 from info_watcher.config import OLD_INFO_DIR
 
@@ -52,6 +54,10 @@ class Spider(object):
         return diffs
 
     def get_soup(self, url):
+        # set xvfb display since there is no GUI in docker container.
+        display = Display(visible=False, size=(800, 600))
+        display.start()
+
         chrome_options = Options()
         chrome_options.add_argument('--headless')  # 无头模式运行，不需要图形界面
         chrome_options.add_argument('blink-settings=imagesEnabled=false')  # 不加载图片，提升速度
