@@ -29,16 +29,23 @@ class Spider(object):
 
     @staticmethod
     def read_old_info(filename):
+        infos = []
         filename = os.path.join(OLD_INFO_DIR, filename)
-        with open(filename, 'r') as f:
-            data = f.readlines()
-        return data
+        try:
+            with open(filename, 'r') as f:
+                for line in f:
+                    infos.append(line.strip())
+        except FileNotFoundError:
+            pass
+        return infos
 
     @staticmethod
     def write_new_info(filename, info):
         filename = os.path.join(OLD_INFO_DIR, filename)
         with open(filename, 'w') as f:
-            f.writelines(info)
+            for item in info:
+                # 将每个元素写入文件，并在每个元素后添加换行符
+                f.write(item + '\n')
 
     @staticmethod
     def compare_new_old(new_info, old_info):
