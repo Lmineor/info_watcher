@@ -1,16 +1,17 @@
-## 主要用于监测目标院校网页是否有新的通知
+## 主要用于监测目标网页是否有新的通知
 ## 实现方法
-- 定时请求目标网页，若有新信息通过邮件的方式通知自己
+- 定时请求目标网页，若有新信息通过bark app的方式通知自己
 - 采用增量更新的方法
 ## 运行
-1、新建local_config.py
-```py
-cd tiaoji_spider
-# 第三方 SMTP 服务
-MAIL_HOST="smtp.***.com"   #设置发送方服务器
-MAIL_USER="xxx@***.com"    #用户名
-MAIL_PASS="password"       #口令 
+
+1. 目标网页若有更新，则调用localhost:8080端口
+```bash
+{bark_key}/推送标题/这里改成你自己的推送内容
+# bark_key 可以通过在Bark APP上查看
 ```
+注：采用8080暴漏，安全性较低，考虑只在服务内部中转，可以采用localhost的方式，避免服务器暴漏8080端口
+
+1、新建local_config.py
 2、运行
 ```py
 python run.py

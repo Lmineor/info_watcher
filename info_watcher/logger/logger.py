@@ -1,11 +1,11 @@
 import logging
 
-from config import LOG_FILE
+from info_watcher.config import LOG_FILE
 
 _g_logger = None
 
 
-def get_logger():
+def _get_logger():
     global _g_logger
     if _g_logger is None:
         logging.basicConfig(filename=LOG_FILE, level=logging.INFO)
@@ -20,4 +20,4 @@ def get_logger():
     return _g_logger
 
 
-logger = get_logger()
+logger = _get_logger()
