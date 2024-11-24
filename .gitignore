@@ -3,3 +3,5 @@ local_config.py
 *.pyc
 *.log
 __pycache__/
+
+.idea
