@@ -48,6 +48,6 @@ class Bark(object):
     def _notify(msg):
         try:
             logger.info(f"send msg to app, title is {msg.title}, content is {msg.content}")
-            requests.get(f"localhost:{BARK_PORT}/{BARK_KEY}/{msg.title}/{msg.content}")
+            requests.get(f"http://112.126.23.119:{BARK_PORT}/{BARK_KEY}/{msg.title}/{msg.content}")
         except Exception as e:
             logger.error(f"failed to notify app, {e}")

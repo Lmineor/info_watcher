@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  info_watcher:
+    image: info_watcher:0.0.1
+    container_name: info_watcher
+    restart: always
+    environment:
+      BARK_KEY: "key"
+      BARK_PORT: "1234"
+    volumes:
+      - /var/log/info_watcher:/var/log/info_watcher
+    ports:
+      - "9999:9999"
+    networks:
+      - net1
+
+networks:
+  net1:
+    driver: bridge
