@@ -4,4 +4,7 @@ local_config.py
 *.log
 __pycache__/
 
+venv
+
+
 .idea
