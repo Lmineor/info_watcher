@@ -4,10 +4,11 @@ import os
 
 from info_watcher.logger.logger import logger
 from info_watcher.pipline.Youzheng import bump
+from info_watcher.pipline.haidian import haidian_bump
 from info_watcher.bark.messages import Bark
 
 app = Flask(__name__)
-code_map = {"youzheng": "邮政"}
+code_map = {"youzheng": "邮政", "haidian": "海淀区人民政府信息公开"}
 
 
 @app.route('/push', methods=['POST'])
@@ -20,6 +21,8 @@ def post_diff():
 
     if scene == "youzheng":
         diffs = bump(current_data)
+    elif scene == "haidian":
+        diffs = haidian_bump(current_data)
     else:
         logger.error("unknown scene")
         diffs = None
