@@ -36,7 +36,7 @@ class HaiDian(PipLineBase):
 
         result = []
         for d in data:
-            result.append(d['发文标题'] + '\n' + self.url)
+            result.append(d['发文标题'] + '?url=' + self.url)
         return result
 
 

@@ -36,7 +36,7 @@ class YouZheng(PipLineBase):
 
         result = []
         for d in data:
-            result.append(d['value'] + '\n' + self.url)
+            result.append(d['value'] + '?url=' + self.url)
         return result
 
 
