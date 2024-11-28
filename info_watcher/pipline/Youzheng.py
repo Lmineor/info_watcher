@@ -17,6 +17,7 @@ class YouZheng(PipLineBase):
     如果有新内容，则通知手机
     """
     filename = "youzheng"
+    url = "https://mall.11185.cn/web/searchJy?businessId=JY&prodGoodsType=NORMAL&classficationId=JY-0"
 
     def bump(self, current_data):
         logger.info(f"into youzheng pipline, before parse {current_data}")
@@ -35,7 +36,7 @@ class YouZheng(PipLineBase):
 
         result = []
         for d in data:
-            result.append(d['value'])
+            result.append(d['value'] + '\n' + self.url)
         return result
 
 

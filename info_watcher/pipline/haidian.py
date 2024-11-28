@@ -17,6 +17,7 @@ class HaiDian(PipLineBase):
     如果有新内容，则通知手机
     """
     filename = "haidian"
+    url = "https://zyk.bjhd.gov.cn/jbdt/auto4522_51806/zdly/bzzf/"
 
     def bump(self, current_data):
         logger.info(f"into haidian pipline, before parse {current_data}")
@@ -35,7 +36,7 @@ class HaiDian(PipLineBase):
 
         result = []
         for d in data:
-            result.append(d['发文标题'])
+            result.append(d['发文标题'] + '\n' + self.url)
         return result
 
 
